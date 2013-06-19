@@ -6,12 +6,11 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   # Load 3rd party recipes
   require_recipe 'dotenv/capistrano'
-  require_recipe 'rvm/capistrano'
 
   load 'deploy' if respond_to?(:namespace)
   load 'deploy/assets'
 
-  [:foreman, :git, :yard, :whenever].each do |mod|
+  [:foreman, :git, :yard, :whenever, :rvm].each do |mod|
     require "halfday/#{mod}/capistrano"
   end
 
