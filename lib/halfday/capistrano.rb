@@ -1,6 +1,13 @@
 require 'halfday/helpers/cset'
+require 'halfday/helpers/require_recipe'
 
 Capistrano::Configuration.instance(:must_exist).load do
+  require "bundler/capistrano"
+
+  require_recipe 'whenever/capistrano'
+  require_recipe 'dotenv/capistrano'
+  require_recipe 'rvm/capistrano'
+
   _cset(:stages){ %w(ci qa staging) }
   _cset(:default_stage){ 'ci' }
 
