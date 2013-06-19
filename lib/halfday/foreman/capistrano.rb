@@ -1,5 +1,8 @@
 Capistrano::Configuration.instance(:must_exist).load do
 
+  after 'deploy', 'foreman:export'
+  after 'deploy', 'foreman:restart'
+
   namespace :foreman do
 
     desc "Export upstart script"
