@@ -15,6 +15,10 @@ Capistrano::Configuration.instance(:must_exist).load do
     require "halfday/#{mod}/capistrano"
   end
 
+  # Callbacks
+  after 'deploy',             'deploy:cleanup'
+  after 'deploy:update_code', 'deploy:migrate'
+
   # Stages
   _cset :stages,        %w(ci qa staging)
   _cset :default_stage, 'ci'
