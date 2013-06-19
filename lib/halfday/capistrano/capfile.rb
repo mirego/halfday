@@ -4,4 +4,6 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   load 'deploy' if respond_to?(:namespace)
   load 'deploy/assets'
+
+  require_relative '../foreman/capistrano'
 end
