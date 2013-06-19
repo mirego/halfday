@@ -8,6 +8,6 @@ Capistrano::Configuration.instance(:must_exist).load do
   load 'deploy/assets'
 
   [:foreman, :git].each do |mod|
-    require_relative "#{mod}/capistrano"
+    require "halfday/#{mod}/capistrano"
   end
 end
