@@ -43,4 +43,10 @@ Capistrano::Configuration.instance(:must_exist).load do
   _cset :rails_env,      Proc.new { 'staging' }
   _cset :migrate_env,    Proc.new { "RAILS_ENV=#{rails_env}" }
 
+  # Branch
+  _cset :branch do
+    tag = Capistrano::CLI.ui.ask "Tag or branch to deploy: [#{default_tag}] "
+    (tag.empty?) ? default_tag : tag
+  end
+
 end
