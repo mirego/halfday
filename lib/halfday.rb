@@ -1,5 +1,5 @@
 require "halfday/version"
+require "halfday/capistrano"
 
 module Halfday
-  # Your code goes here...
 end
