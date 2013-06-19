@@ -2,10 +2,12 @@ require 'halfday/helpers/cset'
 require 'halfday/helpers/require_recipe'
 
 Capistrano::Configuration.instance(:must_exist).load do
-  require "bundler/capistrano"
-
+  # Stages
   # Load 3rd party recipes
+  require_recipe "bundler/capistrano"
   require_recipe 'dotenv/capistrano'
+
+  require 'capistrano/ext/multistage'
 
   load 'deploy' if respond_to?(:namespace)
   load 'deploy/assets'
@@ -18,15 +20,12 @@ Capistrano::Configuration.instance(:must_exist).load do
   after 'deploy',             'deploy:cleanup'
   after 'deploy:update_code', 'deploy:migrate'
 
-  # Stages
-  _cset :stages,        %w(ci qa staging)
-  _cset :default_stage, 'ci'
-
   # Bundler
   _cset :bundle_without, [:test]
 
   # Deploy
-  _cset :deploy_to,      "/opt/#{application}"
+  set :deploy_to,      "/opt/#{application}"
+
   _cset :scm,            :git
   _cset :keep_releases,  3
   _cset :ssh_options,    {:forward_agent => true}

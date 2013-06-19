@@ -22,5 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
 
   spec.add_dependency "capistrano"
+  spec.add_dependency "capistrano-ext"
+
   spec.add_dependency "foreman"
 end
