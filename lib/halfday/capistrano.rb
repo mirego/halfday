@@ -28,7 +28,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   set :scm,            :git
   set :keep_releases,  3
-  set :ssh_options,    {:forward_agent => true}
+  set :ssh_options,    { forward_agent: true }
 
   # User
   set :use_sudo,       false
