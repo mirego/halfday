@@ -47,4 +47,5 @@ Capistrano::Configuration.instance(:must_exist).load do
     (tag.empty?) ? default_tag : tag
   end
 
+  default_run_options[:pty] = true
 end
