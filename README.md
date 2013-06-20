@@ -46,7 +46,7 @@ On deployment, you'll be ask to specify the `branch` or `tag` you want to deploy
 ```
 $ cap staging deploy
 
-  * 2013-06-20 14:02:53 executing `qa'                
+  * 2013-06-20 14:02:53 executing `staging'                
   * 2013-06-20 14:02:53 executing `deploy'            
   * 2013-06-20 14:02:53 executing `deploy:update'     
  ** transaction: start                                
