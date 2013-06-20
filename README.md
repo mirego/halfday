@@ -6,7 +6,7 @@ This gem adds some recipes for Capistrano.
 
 Add this line to your application's `Gemfile`:
 
-```
+```ruby
 gem 'halfday'
 ```
 
@@ -14,7 +14,7 @@ gem 'halfday'
 
 Add those lines to your application's `Capfile`:
 
-```
+```ruby
 set :application, 'YOUR APPLICATION NAME'
 set :repository, 'YOUR GIT REPOSITORY'
 
@@ -25,7 +25,7 @@ require 'halfday'
 
 You still need to define every environments in `config/deploy/`.
 
-```
+```ruby
 # config/deploy/staging.rb
 
 role :app, 'HOSTNAME', :primary => true
@@ -61,7 +61,7 @@ Tag or branch to deploy: [0.2.4]
 
 ### Foreman
 
-```
+```bash
 cap foreman:restart      # Restart your app
 cap foreman:start        # Start your app
 cap foreman:stop         # Stop your app
@@ -70,7 +70,7 @@ cap foreman:export       # Export upstart script to /etc/init/
 
 ### Git
 
-```
+```bash
 cap git:clean            # Remove .git
 cap git:init_submodules  # Initialize Git submodule
 ```
@@ -85,7 +85,7 @@ If your project includes [Whenever](https://github.com/javan/whenever), the cron
 
 ### Yard
 
-```
+```bash
 cap yard:generate        # Generate your doc and make it available
                          # in http://.../doc
 ```
