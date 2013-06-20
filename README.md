@@ -28,9 +28,9 @@ You still need to define every environments in `config/deploy/`.
 ```ruby
 # config/deploy/staging.rb
 
-role :app, 'HOSTNAME', :primary => true
-role :web, 'HOSTNAME', :primary => true
-role :db,  'HOSTNAME', :primary => true
+role :app, 'HOSTNAME', primary: true
+role :web, 'HOSTNAME', primary: true
+role :db,  'HOSTNAME', primary: true
 
 set :default_tag, '0.2.4' # Branch or Tag
 ```
