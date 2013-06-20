@@ -43,16 +43,16 @@ For now, all those recipes will be used on deployment if their Gem is included i
 
 On deployment, you'll be ask to specify the `branch` or `tag` you want to deploy. If you hit `Enter`, the `default_tag` will be used.
 
-```
+```bash
 $ cap staging deploy
 
-  * 2013-06-20 14:02:53 executing `staging'                
-  * 2013-06-20 14:02:53 executing `deploy'            
-  * 2013-06-20 14:02:53 executing `deploy:update'     
- ** transaction: start                                
+  * 2013-06-20 14:02:53 executing `staging'
+  * 2013-06-20 14:02:53 executing `deploy'
+  * 2013-06-20 14:02:53 executing `deploy:update'
+ ** transaction: start
   * 2013-06-20 14:02:53 executing `deploy:update_code'
-  
-Tag or branch to deploy: [0.2.4]    
+
+Tag or branch to deploy: [0.2.4]
 ```
 
 ### Dotenv
