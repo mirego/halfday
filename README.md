@@ -4,7 +4,7 @@ This gem adds some recipes for Capistrano.
 
 ## Installation
 
-Add this line to your application's `Gemfile`:
+Add this line to your applicationns `Gemfile`:
 
 ```ruby
 gem 'halfday'
@@ -12,7 +12,7 @@ gem 'halfday'
 
 ## Usage
 
-Add those lines to your application's `Capfile`:
+Add those lines to your application’s `Capfile`:
 
 ```ruby
 set :application, 'YOUR APPLICATION NAME'
@@ -77,7 +77,7 @@ cap git:init_submodules  # Initialize Git submodule
 
 ### RVM
 
-If you're using [RVM](https://rvm.io/) on your server, it'll automatically use the Ruby version written in your `.ruby-version` file.
+If you’re using [RVM](https://rvm.io/) on your server, it’ll automatically use the Ruby version written in your `.ruby-version` file.
 
 ### Whenever
 
