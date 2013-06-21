@@ -44,6 +44,8 @@ Capistrano::Configuration.instance(:must_exist).load do
   # Branch
   set :branch do
     tag = Capistrano::CLI.ui.ask "Tag or branch to deploy: [#{default_tag}] "
+    tag = `git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'`.chomp if tag == 'HEAD'
+
     (tag.empty?) ? default_tag : tag
   end
 
