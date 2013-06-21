@@ -41,7 +41,7 @@ For now, all those recipes will be used on deployment if their Gem is included i
 
 ### Branch deployment
 
-On deployment, you'll be ask to specify the `branch` or `tag` you want to deploy. If you hit `Enter`, the `default_tag` will be used.
+On deployment, you’ll be ask to specify the `branch` or `tag` you want to deploy. If you hit `Enter`, the `default_tag` will be used. You can also enter `HEAD` to use the branch you’re currently on.
 
 ```bash
 $ cap staging deploy
