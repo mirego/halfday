@@ -27,6 +27,8 @@ Capistrano::Configuration.instance(:must_exist).load do
       task action, roles: :app do
         sudo "service #{application} #{action}"
       end
+
+      before "foreman:#{action}", 'foreman:export'
     end
 
   end
