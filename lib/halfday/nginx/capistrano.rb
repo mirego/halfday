@@ -10,7 +10,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
       if %w{ci qa staging}.include?(rails_env)
         if File.directory?(conf_path)
-          run "cd #{conf_path} && ln -fsn *.conf /etc/nginx/apps.conf.d"
+          run "cd #{conf_path} && ln -fsn *.conf /etc/nginx/apps.conf.d/"
           run "sudo service nginx reload"
         else
           puts "WARNING: No nginx configuration found for this app"
