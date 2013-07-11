@@ -12,7 +12,7 @@ Capistrano::Configuration.instance(:must_exist).load do
   load 'deploy' if respond_to?(:namespace)
   load 'deploy/assets'
 
-  [:foreman, :git, :yard, :whenever, :rvm, :setup].each do |mod|
+  [:foreman, :git, :yard, :whenever, :rvm, :setup, :nginx].each do |mod|
     require "halfday/#{mod}/capistrano"
   end
 
