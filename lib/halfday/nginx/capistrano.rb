@@ -7,9 +7,12 @@ Capistrano::Configuration.instance(:must_exist).load do
     desc 'Add app configuration for Mirego infrastructure'
     task :configure, roles: :app do
       if %w{ci qa staging}.include?(rails_env)
-        conf = File.open(File.expand_path('../templates/app.conf', __FILE__)).read
+        conf_path = "/etc/nginx/apps.conf.d/#{application}.conf"
 
-        run "echo \"#{conf}\" > /etc/nginx/apps.conf.d/#{application}.conf"
+        upload File.expand_path('../templates/app.conf', __FILE__), conf_path
+
+        run "sed -i #{conf_path} -e s/\\\\[APPLICATION\\\\]/#{application}/g"
+        run "source #{current_path}/.env && sed -i #{conf_path} -e s/\\\\[PORT\\\\]/$PORT/g"
         run "sudo service nginx reload"
       end
     end
