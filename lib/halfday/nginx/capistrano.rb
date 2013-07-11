@@ -10,7 +10,6 @@ Capistrano::Configuration.instance(:must_exist).load do
         conf = File.open(File.expand_path('../templates/app.conf', __FILE__)).read
 
         run "echo \"#{conf}\" > /etc/nginx/apps.conf.d/#{application}.conf"
-        run "cd #{conf_path} && ln -fsn *.conf /etc/nginx/apps.conf.d/"
         run "sudo service nginx reload"
       end
     end
