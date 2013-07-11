@@ -1,8 +1,8 @@
 Capistrano::Configuration.instance(:must_exist).load do
 
-  before 'deploy:setup', 'mirego:create_directory'
+  before 'deploy:setup', 'setup:create_directory'
 
-  namespace :mirego do
+  namespace :setup do
 
     desc "Create app directory"
     task :create_directory, roles: :app do
