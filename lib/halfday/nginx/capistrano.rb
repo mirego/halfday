@@ -6,15 +6,12 @@ Capistrano::Configuration.instance(:must_exist).load do
 
     desc 'Add app configuration for Mirego infrastructure'
     task :configure, roles: :app do
-      conf_path = "#{deploy_to}/current/config/deploy/nginx/"
-
       if %w{ci qa staging}.include?(rails_env)
-        if File.directory?(conf_path)
-          run "cd #{conf_path} && ln -fsn *.conf /etc/nginx/apps.conf.d/"
-          run "sudo service nginx reload"
-        else
-          puts "WARNING: No nginx configuration found for this app"
-        end
+        conf = File.open(File.expand_path('templates/app.conf', __FILE__)).read
+
+        run "echo \"#{conf}\" > /etc/nginx/apps.conf.d/#{application}.conf"
+        run "cd #{conf_path} && ln -fsn *.conf /etc/nginx/apps.conf.d/"
+        run "sudo service nginx reload"
       end
     end
   end
