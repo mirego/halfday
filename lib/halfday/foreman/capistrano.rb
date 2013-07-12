@@ -9,7 +9,7 @@ Capistrano::Configuration.instance(:must_exist).load do
     task :export, roles: :app do
       # Uploading process template
       run "mkdir #{shared_path}/templates"
-      upload File.expand_path('upstart/templates/process.conf.erb', __FILE__), "#{shared_path}/templates/process.conf.erb"
+      upload File.expand_path('../upstart/templates/process.conf.erb', __FILE__), "#{shared_path}/templates/process.conf.erb"
 
       # I couldn't simply use `sudo bundle exec` since
       # there was an issue using RVM. It was raising
