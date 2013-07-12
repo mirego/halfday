@@ -7,6 +7,10 @@ Capistrano::Configuration.instance(:must_exist).load do
 
     desc "Export upstart script"
     task :export, roles: :app do
+      # Uploading process template
+      run "mkdir -p #{shared_path}/templates"
+      upload File.expand_path('../upstart/process.conf.erb', __FILE__), "#{shared_path}/templates/process.conf.erb"
+
       # I couldn't simply use `sudo bundle exec` since
       # there was an issue using RVM. It was raising
       #
@@ -17,9 +21,12 @@ Capistrano::Configuration.instance(:must_exist).load do
       #
       # The fix was to write the upstart script into
       # a non-restricted folder and move it right after.
-      run  "cd #{current_path} && #{bundle_cmd} exec foreman export upstart -a #{application} -u #{user} -l #{shared_path}/log/ -t #{File.expand_path('../upstart/templates', __FILE__)} #{shared_path}/upstart"
+      run  "cd #{current_path} && #{bundle_cmd} exec foreman export upstart -a #{application} -u #{user} -l #{shared_path}/log/ -t #{shared_path}/templates #{shared_path}/upstart"
       sudo "mv #{shared_path}/upstart/* /etc/init/"
+
+      # Cleaning up this mess
       run  "rm -rf #{shared_path}/upstart"
+      run  "rm -rf #{shared_path}/templates"
     end
 
     [:start, :stop, :restart].each do |action|
