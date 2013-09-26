@@ -22,6 +22,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   # Bundler
   set :bundle_without, [:test]
+  _cset :bundle_cmd,   "bundle"
 
   # Deploy
   _cset :deploy_to,      "/opt/#{application}"
