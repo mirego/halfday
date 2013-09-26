@@ -12,8 +12,11 @@ Capistrano::Configuration.instance(:must_exist).load do
   load 'deploy' if respond_to?(:namespace)
   load 'deploy/assets'
 
+  # Load recipes
+  _cset :ignored_recipes, []
+
   [:foreman, :git, :yard, :whenever, :rvm, :setup, :nginx].each do |mod|
-    require "halfday/#{mod}/capistrano"
+    require "halfday/#{mod}/capistrano" unless ignored_recipes.include?(mod)
   end
 
   # Callbacks
