@@ -41,6 +41,11 @@ set :default_tag, '0.2.4' # Branch or Tag
 
 For now, all those recipes will be used on deployment if their Gem is included in your `Gemfile`.
 
+You can manually skip a recipe by setting the `ignored_recipes` config variable:
+```RUBY
+set :ignored_recipes, [:nginx]
+```
+
 ### Branch deployment
 
 On deployment, you’ll be ask to specify the `branch` or `tag` you want to deploy. If you hit `Enter`, the `default_tag` will be used. You can also enter `HEAD` to use the branch you’re currently on.
