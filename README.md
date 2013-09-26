@@ -9,7 +9,7 @@ This gem adds some recipes for Capistrano.
 Add this line to your applicationns `Gemfile`:
 
 ```ruby
-gem 'halfday', required: false
+gem 'halfday', require: false
 ```
 
 ## Usage
