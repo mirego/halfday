@@ -2,12 +2,14 @@
 
 This gem adds some recipes for Capistrano.
 
+*__Warning:__ It is not recommended to use this gem as is since you need your server to be configured in a very specific way. Extract what you need or fork it to make it compliant with your setup.*
+
 ## Installation
 
 Add this line to your applicationns `Gemfile`:
 
 ```ruby
-gem 'halfday'
+gem 'halfday', required: false
 ```
 
 ## Usage
@@ -92,7 +94,7 @@ cap yard:generate        # Generate your doc and make it available
 
 ## Todo
 
-* Add a more flexible way to manage which recipes should be applied.
+* ~~Add a more flexible way to manage which recipes should be applied.~~
 * Add Rails generator for the Capfile.
 * Remove dependancy from Rails.
 * More recipes, always.
