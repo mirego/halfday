@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Halfday::VERSION
   spec.authors       = ["Samuel Garneau"]
   spec.email         = ["sgarneau@mirego.com"]
-  spec.description   = %q{All you need to deploy on our internal infrastructure}
-  spec.summary       = %q{All you need to deploy on our internal infrastructure}
+  spec.description   = %q{Collection of Capistrano recipes - Deploy. Then, take a halfday.}
+  spec.summary       = %q{Collection of Capistrano recipes - Deploy. Then, take a halfday.}
   spec.homepage      = "https://github.com/mirego/halfday"
   spec.license       = "MIT"
 
