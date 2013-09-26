@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Collection of Capistrano recipes - Deploy. Then, take a halfday.}
   spec.summary       = %q{Collection of Capistrano recipes - Deploy. Then, take a halfday.}
   spec.homepage      = "https://github.com/mirego/halfday"
-  spec.license       = "MIT"
+  spec.license       = 'BSD 3-Clause'
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
