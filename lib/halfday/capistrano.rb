@@ -24,7 +24,7 @@ Capistrano::Configuration.instance(:must_exist).load do
   set :bundle_without, [:test]
 
   # Deploy
-  set :deploy_to,      "/opt/#{application}"
+  _cset :deploy_to,      "/opt/#{application}"
 
   set :scm,            :git
   set :keep_releases,  3
