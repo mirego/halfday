@@ -4,7 +4,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   namespace :nginx do
 
-    desc 'Add app configuration for Mirego infrastructure'
+    desc 'Add nginx configuration'
     task :configure, roles: :app do
       if %w{ci qa staging}.include?(rails_env)
         conf_path = "/etc/nginx/apps.conf.d/#{application}.conf"
