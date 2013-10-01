@@ -21,7 +21,7 @@ Capistrano::Configuration.instance(:must_exist).load do
       #
       # The fix was to write the upstart script into
       # a non-restricted folder and move it right after.
-      run  "cd #{current_path} && #{bundle_cmd} exec foreman export upstart -a #{application} -u #{user} -l #{shared_path}/log/ -t #{shared_path}/templates #{shared_path}/upstart"
+      run  "cd #{current_path} && #{bundle_cmd} exec foreman export upstart #{shared_path}/upstart -a #{application} -u #{user} -l #{shared_path}/log/ -t #{shared_path}/templates"
       sudo "mv #{shared_path}/upstart/* /etc/init/"
 
       # Cleaning up this mess
