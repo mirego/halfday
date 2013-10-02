@@ -1,4 +1,5 @@
 require 'halfday/helpers/cset'
+require 'halfday/helpers/roles'
 require 'halfday/helpers/require_recipe'
 
 Capistrano::Configuration.instance(:must_exist).load do
@@ -21,14 +22,14 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   # Callbacks
   after 'deploy',             'deploy:cleanup'
-  after 'deploy:update_code', 'deploy:migrate'
+  after 'deploy:update_code', 'deploy:migrate' if role_available?(:db)
 
   # Bundler
   set :bundle_without, [:test]
   _cset :bundle_cmd,   "bundle"
 
   # Deploy
-  _cset :deploy_to,      "/opt/#{application}"
+  _cset :deploy_to,    "/opt/#{application}"
 
   set :scm,            :git
   set :keep_releases,  3
