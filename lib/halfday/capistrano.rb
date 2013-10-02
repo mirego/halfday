@@ -24,29 +24,29 @@ Capistrano::Configuration.instance(:must_exist).load do
   after 'deploy:update_code', 'deploy:migrate'
 
   # Bundler
-  set :bundle_without, [:test]
-  _cset :bundle_cmd,   "bundle"
+  _cset :bundle_without, [:test]
+  _cset :bundle_cmd,     "bundle"
 
   # Deploy
   _cset :deploy_to,      "/opt/#{application}"
 
-  set :scm,            :git
-  set :keep_releases,  3
-  set :ssh_options,    { forward_agent: true }
+  _cset :scm,            :git
+  _cset :keep_releases,  3
+  _cset :ssh_options,    { forward_agent: true }
 
   # User
-  set :use_sudo,       false
-  set :user,           :ubuntu
+  _cset :use_sudo,       false
+  _cset :user,           :ubuntu
 
   # Environment
   #
   # On all our remote server, the environment
   # should be staging.
-  set :rails_env,      Proc.new { 'staging' }
-  set :migrate_env,    Proc.new { "RAILS_ENV=#{rails_env}" }
+  _cset :rails_env,      Proc.new { 'staging' }
+  _cset :migrate_env,    Proc.new { "RAILS_ENV=#{rails_env}" }
 
   # Branch
-  set :branch do
+  _cset :branch do
     tag = Capistrano::CLI.ui.ask "Tag or branch to deploy: [#{default_tag}] "
     tag = `git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'`.chomp if tag == 'HEAD'
 
